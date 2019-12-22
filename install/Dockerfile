@@ -12,7 +12,8 @@ ENV VENV_PIP ${VENV_BASE}/${PROJECT_NAME}/bin/pip
 RUN apt-get update && apt-get upgrade -y
 
 # Install packages
-RUN apt-get -y install software-properties-common python3 python3-pip python3-dev wget nano unzip python3-setuptools python3-venv
+RUN apt-get -y install software-properties-common python3 python3-pip python3-dev libmysqlclient-dev wget \
+nano unzip python3-setuptools python3-venv
 
 # Add python3.6 and update packages
 RUN add-apt-repository ppa:deadsnakes/ppa && \
@@ -21,7 +22,10 @@ RUN add-apt-repository ppa:deadsnakes/ppa && \
   apt-get install -y python3.6
 
 # Make gunicorn logging directory
-RUN mkdir /var/log/gunicorn
+RUN mkdir ${PROJECT_BASE}
+RUN mkdir ${PROJECT_BASE}/log/
+RUN touch ${PROJECT_BASE}/log/gunicorn_access.log
+RUN touch ${PROJECT_BASE}/log/gunicorn_error.log
 
 # Make virtual environment and project location
 RUN mkdir -p ${VENV_BASE} && \
