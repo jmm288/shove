@@ -1,0 +1,5 @@
+gunicorn==20.0.04
+greenlet
+eventlet
+gevent
+Django
