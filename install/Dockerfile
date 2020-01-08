@@ -12,7 +12,7 @@ ENV VENV_PIP ${VENV_BASE}/${PROJECT_NAME}/bin/pip
 RUN apt-get update && apt-get upgrade -y
 
 # Install packages
-RUN apt-get -y install software-properties-common python3 python3-pip python3-dev libmysqlclient-dev wget \
+RUN apt-get -y install software-properties-common python3 python3-pip python3-dev libmysqlclient-dev python-mysqldb libssl-dev wget \
 nano unzip python3-setuptools python3-venv
 
 # Add python3.6 and update packages
@@ -33,9 +33,7 @@ RUN mkdir -p ${VENV_BASE} && \
   mkdir -p ${PROJECT_BASE}
 
 # Add app build
-RUN ls -l ${PROJECT_BASE}/
 ADD . ${PROJECT_BASE}/
-RUN ls -l ${PROJECT_BASE}/
 
 # Updating virtual environment libraries
 RUN ${VENV_PIP} install --upgrade pip
