@@ -13,7 +13,7 @@ RUN apt-get update && apt-get upgrade -y
 
 # Install packages
 RUN apt-get -y install software-properties-common python3 python3-pip python3-dev libmysqlclient-dev python-mysqldb libssl-dev wget \
-nano unzip python3-setuptools python3-venv
+nano unzip python3-setuptools python3-venv libmysqlclient-dev
 
 # Add python3.6 and update packages
 RUN add-apt-repository ppa:deadsnakes/ppa && \

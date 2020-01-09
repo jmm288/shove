@@ -25,7 +25,7 @@ SECRET_KEY = 'ymic3!v%hf3*^b#az1ymfjl%!zh%wy-nlbkaly$=an8vg3u&)e'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost']
+ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -65,7 +65,6 @@ TEMPLATES = [
         },
     },
 ]
-print(TEMPLATES)
 
 WSGI_APPLICATION = 'shove.wsgi.application'
 
@@ -76,17 +75,13 @@ WSGI_APPLICATION = 'shove.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME':  os.environ['DATABASE_NAME'],
-        'USER':  os.environ['DATABASE_USER'],
-        'PASSWORD':  os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_HOST'],
-        'PORT': os.environ['DATABASE_PORT'],
-        'OPTIONS': {
-            'read_default_file': '/etc/mysql/my.cnf',
-        },
+        'NAME': 'shove', #os.environ['DATABASE_NAME'],
+        'USER': 'jbarton', #os.environ['DATABASE_USER'],
+        'PASSWORD': 'mysqltest', #os.environ['DATABASE_PASSWORD'],
+        'HOST': '0.0.0.0', #os.environ['DATABASE_HOST'],
+        'PORT': '3306', #os.environ['DATABASE_PORT'],
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
@@ -125,3 +120,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'static/'),
+)

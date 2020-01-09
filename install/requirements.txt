@@ -4,4 +4,3 @@ eventlet
 gevent
 Django
 pymysql
-mysqlclient
