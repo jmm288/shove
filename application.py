@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 
+
 def app(environ, start_response):
     """Simplest possible application object"""
     data = b'Hello, World!\n'

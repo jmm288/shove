@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-SHOVE_ENV = {
+PIGE_ENV = {
     "realms": {
         "development": {
             "environment_variables": {},

@@ -9,11 +9,12 @@ ENV VENV_PROJECT_BASE ${VENV_BASE}/${PROJECT_NAME}
 ENV VENV_PIP ${VENV_BASE}/${PROJECT_NAME}/bin/pip
 
 # Update packages
-RUN apt-get update && apt-get upgrade -y
+RUN apt update && apt-get upgrade -y
 
 # Install packages
-RUN apt-get -y install software-properties-common python3 python3-pip python3-dev libmysqlclient-dev python-mysqldb libssl-dev wget \
-nano unzip python3-setuptools python3-venv libmysqlclient-dev
+RUN apt-get -y install software-properties-common python3 python3-pip python3-dev libmysqlclient-dev python-mysqldb \
+ build-essential libssl-dev libffi-dev libxml2-dev libxslt1-dev zlib1g-dev wget nano unzip python3-setuptools \
+ python3-venv libmysqlclient-dev
 
 # Add python3.6 and update packages
 RUN add-apt-repository ppa:deadsnakes/ppa && \
@@ -40,10 +41,10 @@ RUN ${VENV_PIP} install --upgrade pip
 RUN ${VENV_PIP} install -r ${PROJECT_BASE}/install/requirements.txt
 
 # Move run script
-RUN cp $PROJECT_BASE/shove/run.sh /root/run.sh && \
+RUN cp $PROJECT_BASE/pig-e/run.sh /root/run.sh && \
     chmod 0744 /root/run.sh
 
 # Set working dir
-WORKDIR $PROJECT_BASE/shove/
+WORKDIR $PROJECT_BASE/pig-e/
 
 ENTRYPOINT ["/root/run.sh"]

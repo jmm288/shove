@@ -3,4 +3,4 @@ greenlet
 eventlet
 gevent
 Django
-pymysql
+mysqlclient
